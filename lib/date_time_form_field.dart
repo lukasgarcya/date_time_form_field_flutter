@@ -10,6 +10,10 @@ class DateTimeFormField extends FormField<DateTime> {
       DateTime firstDate,
       DateTime lastDate,
       Locale locale,
+      onSaved,
+      ValueChanged<T> onChanged,
+      autovalidate = false,
+      enabled = true,
       FormFieldValidator<DateTime> validator})
       : super(
             key: key,
@@ -48,7 +52,11 @@ class DateTimeFormField extends FormField<DateTime> {
                               }
                             })
                       ]));
-            });
+            },
+            onSaved: onSaved,
+            autovalidate: autovalidate,
+            enabled: enabled,
+            validator: validator);
 }
 
 class DateFormField extends FormField<DateTime> {
@@ -59,6 +67,10 @@ class DateFormField extends FormField<DateTime> {
       DateTime firstDate,
       DateTime lastDate,
       Locale locale,
+      onSaved,
+      ValueChanged<T> onChanged,
+      autovalidate = false,
+      enabled = true,
       FormFieldValidator<DateTime> validator})
       : super(
             key: key,
@@ -86,17 +98,30 @@ class DateFormField extends FormField<DateTime> {
                               }
                             })
                       ]));
-            });
+            },
+            onSaved: onSaved,
+            autovalidate: autovalidate,
+            enabled: enabled,
+            validator: validator);
 }
 
 class TimeFormField extends FormField<TimeOfDay> {
-  TimeFormField({Key key, Widget label, TimeOfDay initialValue})
+  TimeFormField(
+      {Key key,
+      Widget label,
+      TimeOfDay initialValue,
+      onSaved,
+      ValueChanged<T> onChanged,
+      autovalidate = false,
+      enabled = true,
+      FormFieldValidator<DateTime> validator})
       : super(
             key: key,
             initialValue: initialValue,
             builder: (FormFieldState<TimeOfDay> state) {
               final TextEditingController controller = TextEditingController();
-              controller.text = '${state.value.hour<10?'0':''}${state.value.hour}:${state.value.minute<10?'0':''}${state.value.minute}';
+              controller.text =
+                  '${state.value.hour < 10 ? '0' : ''}${state.value.hour}:${state.value.minute < 10 ? '0' : ''}${state.value.minute}';
               return Builder(
                   builder: (context) => Column(children: <Widget>[
                         label == null ? Container() : label,
@@ -115,5 +140,9 @@ class TimeFormField extends FormField<TimeOfDay> {
                               }
                             })
                       ]));
-            });
+            },
+            onSaved: onSaved,
+            autovalidate: autovalidate,
+            enabled: enabled,
+            validator: validator);
 }
