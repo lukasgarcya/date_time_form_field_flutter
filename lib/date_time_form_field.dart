@@ -48,7 +48,9 @@ class DateTimeFormField extends FormField<DateTime> {
                                       dateTime.day,
                                       timeOfDay.hour,
                                       timeOfDay.minute);
-                                  onChanged(dateTime);
+                                  if (onChanged != null) {
+                                    onChanged(dateTime);
+                                  }
                                   state.didChange(dateTime);
                                 }
                               }
@@ -96,7 +98,9 @@ class DateFormField extends FormField<DateTime> {
                                   lastDate: lastDate,
                                   locale: locale);
                               if (dateTime != null) {
-                                onChanged(dateTime);
+                                if (onChanged != null) {
+                                  onChanged(dateTime);
+                                }
                                 state.didChange(dateTime);
                               }
                             })
@@ -139,7 +143,9 @@ class TimeFormField extends FormField<TimeOfDay> {
                                       hour: state.value.hour,
                                       minute: state.value.minute));
                               if (timeOfDay != null) {
-                                onChanged(timeOfDay);
+                                if (onChanged != null) {
+                                  onChanged(timeOfDay);
+                                }
                                 state.didChange(timeOfDay);
                               }
                             })
