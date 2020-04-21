@@ -11,7 +11,7 @@ class DateTimeFormField extends FormField<DateTime> {
       DateTime lastDate,
       Locale locale,
       onSaved,
-      ValueChanged<T> onChanged,
+      ValueChanged<DateTime> onChanged,
       autovalidate = false,
       enabled = true,
       FormFieldValidator<DateTime> validator})
@@ -68,7 +68,7 @@ class DateFormField extends FormField<DateTime> {
       DateTime lastDate,
       Locale locale,
       onSaved,
-      ValueChanged<T> onChanged,
+      ValueChanged<DateTime> onChanged,
       autovalidate = false,
       enabled = true,
       FormFieldValidator<DateTime> validator})
@@ -111,10 +111,10 @@ class TimeFormField extends FormField<TimeOfDay> {
       Widget label,
       TimeOfDay initialValue,
       onSaved,
-      ValueChanged<T> onChanged,
+      ValueChanged<TimeOfDay> onChanged,
       autovalidate = false,
       enabled = true,
-      FormFieldValidator<DateTime> validator})
+      FormFieldValidator<TimeOfDay> validator})
       : super(
             key: key,
             initialValue: initialValue,
